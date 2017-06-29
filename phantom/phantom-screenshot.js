@@ -36,7 +36,7 @@ if (system.args.length !== 5) {
       window.setTimeout(function() {
         page.render(output);
         phantom.exit();
-      }, 200);
+      }, 2000);
     }
   });
 }

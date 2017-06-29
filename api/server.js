@@ -9,7 +9,7 @@ import Boom from 'boom'
 export default () => {
   const app = new Koa()
   app.name = 'API'
-  app.use(body({ multipart: true }))
+  app.use(body())
   app.use(async (ctx: any, next: Function) => {
     try {
       await next()

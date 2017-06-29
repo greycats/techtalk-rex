@@ -1,0 +1,13 @@
+[ignore]
+.*/node_modules/\..*@fbjs
+.*/node_modules/\..*@draft-js
+[include]
+
+[libs]
+decls/
+
+[options]
+module.system=haste
+
+[version]
+^0.47.0

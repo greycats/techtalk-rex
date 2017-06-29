@@ -4,7 +4,10 @@
   "private": true,
   "dependencies": {
     "react": "^15.6.1",
-    "react-dom": "^15.6.1"
+    "react-bootstrap": "^0.31.0",
+    "react-dom": "^15.6.1",
+    "react-spinkit": "^3.0.0",
+    "superagent": "^3.5.2"
   },
   "devDependencies": {
     "react-scripts": "1.0.7"

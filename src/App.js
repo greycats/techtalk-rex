@@ -1,21 +1,50 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+//@flow
+
+import React, { Component } from 'react'
+import { Grid, Row, Col, Alert } from 'react-bootstrap'
+import Nav from './Nav'
+import Form from './Form'
+import Spinner from 'react-spinkit'
+import request from 'superagent'
 
 class App extends Component {
+  state: {
+    loading: boolean,
+    error?: string
+  } = {
+    loading: false
+  }
+
+  async performSearch(keyword: string) {
+    this.setState({ loading: true })
+    try {
+      await request.post('/api/search').send({ keyword })
+    } catch(error) {
+      this.setState({ error: error.message })
+    }
+    this.setState({ loading: false })
+  }
+
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div>
+        <Nav />
+        <Grid>
+          <Row>
+            <Col md={10} mdOffset={1}>
+              <Form onSubmit={this.performSearch.bind(this)} />
+            </Col>
+          </Row>
+          <Row>
+            <Col md={10} mdOffset={1}>
+              {this.state.loading && <Spinner name='double-bounce' /> }
+              {this.state.error && <Alert bsStyle="warning"><strong>Error</strong>: {this.state.error}</Alert> }
+            </Col>
+          </Row>
+          </Grid>
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App

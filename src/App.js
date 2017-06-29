@@ -18,11 +18,12 @@ class App extends Component {
   async performSearch(keyword: string) {
     this.setState({ loading: true })
     try {
-      await request.post('/api/search').send({ keyword })
+      const res = await request.post('/api/search').send({ keyword })
+      console.log(res.body)
     } catch(error) {
       this.setState({ error: error.message })
     }
-    this.setState({ loading: false })
+    this.setState({ loading: false, error: undefined })
   }
 
   render() {

@@ -4,6 +4,7 @@
   "private": true,
   "proxy": "http://localhost:3001",
   "dependencies": {
+    "bull": "^3.0.0-rc.3",
     "kcors": "^2.2.1",
     "koa": "^2.3.0",
     "koa-body": "^2.3.0",

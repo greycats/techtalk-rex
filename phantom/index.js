@@ -3,6 +3,7 @@
 import phantomjs from 'phantomjs-prebuilt'
 import fs from 'fs'
 import tmp from 'tmp'
+import Queue from 'bull'
 
 type Links = {[key: string]: string}[]
 
@@ -33,3 +34,21 @@ export function screenshot(options: Options): Promise<string> {
     })
   })
 }
+
+
+const queue = new Queue('screenshot')
+const completionQueue = new Queue('screenshot-complete')
+
+queue.process(job =>
+  screenshot(job.data)
+  .then(path =>
+    completionQueue.add({job_id: job.id, path})
+  )
+)
+
+queue.on('active', (job) => {
+  console.log('job active', job.id)
+})
+queue.on('completed', (job, result) => {
+  console.log('job completed', job.id)
+})

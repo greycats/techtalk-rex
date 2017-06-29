@@ -1,0 +1,8 @@
+apps:
+  - script: api
+    interpreter: babel-node
+    watch: true
+
+  - script: phantom
+    interpreter: babel-node
+    watch: true

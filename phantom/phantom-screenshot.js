@@ -14,6 +14,7 @@ if (system.args.length !== 5) {
       pageHeight = parseInt(pageWidth * 3/4, 10);
   page.viewportSize = { width: pageWidth, height: pageHeight };
   scale = parseInt(system.args[4], 10);
+  page.zoomFactor = scale;
 
   page.onConsoleMessage = function(message) {
     console.log(message);

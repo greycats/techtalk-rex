@@ -8,7 +8,7 @@ import Spinner from 'react-spinkit'
 import request from 'superagent'
 import './App.css'
 
-class App extends Component {
+class App extends Component<any, any> {
   state: {
     loading: boolean,
     error?: string,

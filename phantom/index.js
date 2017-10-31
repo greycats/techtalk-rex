@@ -5,7 +5,7 @@ import fs from 'fs'
 import tmp from 'tmp'
 import Queue from 'bull'
 
-type Links = {[key: string]: string}[]
+
 
 type Options = {
   url: string,

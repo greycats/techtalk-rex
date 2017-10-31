@@ -10,4 +10,4 @@ decls/
 module.system=haste
 
 [version]
-^0.47.0
+^0.57.3

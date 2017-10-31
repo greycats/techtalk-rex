@@ -12,7 +12,6 @@ class Nav extends Component {
           <Navbar.Toggle />
         </Navbar.Header>
         <Navbar.Collapse>
-
         </Navbar.Collapse>
       </Navbar>
     )
